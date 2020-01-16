@@ -1,13 +1,14 @@
 {% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <div class="content-section">
         <form method="POST">
-            {% csrf token %}        <!--to access the form variables that we sent as context dictionary-->
+            {% csrf_token %}        <!--to access the form variables that we sent as context dictionary-->
 
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today!</legend>
-                {{ form }}
+                <legend class="border-bottom mb-4 pb-2">Join Today!</legend>
+                {{ form|crispy }}     <!--using the crispy filter:: to add a filter use '|'-->
             </fieldset>
 
             <div class="form-group">
@@ -15,10 +16,10 @@
             </div>
         </form>
 
-        <div class="border-top pt-3">
+        <div class="border-top pt-2">
             <small class="text-muted">
-                Already have an Account? <a href="#" class="ml-2">Sign In</a>
+                Already have an Account? <a href="{% url 'login' %}" class="ml-2">Sign In</a>
             </small>
         </div>
     </div>
-{% endblock content%}
+{% endblock content %}

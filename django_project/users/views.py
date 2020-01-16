@@ -1,6 +1,21 @@
-from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from .forms import UserRegistrationForm
+from django.contrib import messages         #to pass a one time message to the template
+
+# messages.info
+# messages.debug
+# messages.success
+# messages.warning
+# messages.error
 
 def register(request):
-    form = UserCreationForm()       #creating an instance of UserCreationForm Class
-    return render(request, users/register.html, {'form': form})       #oassing a dictionary as the context
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account Successfully created for {username} !')
+            return redirect('blog-home')
+    else:
+        form = UserRegistrationForm()       #creating an instance of UserCreationForm Class
+    return render(request, 'users/register.html', {'form': form})       #passing a dictionary as the context
