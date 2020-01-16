@@ -125,4 +125,5 @@ STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'     #changing the crispy settings to use bs4 instead.
 LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'blog-home'
