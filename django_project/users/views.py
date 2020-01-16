@@ -13,9 +13,9 @@ def register(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account Successfully created for {username} !')
-            return redirect('blog-home')
+            # username = form.cleaned_data.get('username')
+            messages.success(request, f'Your account has been created, Would you like to Login!')
+            return redirect('login')
     else:
         form = UserRegistrationForm()       #creating an instance of UserCreationForm Class
     return render(request, 'users/register.html', {'form': form})       #passing a dictionary as the context
