@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
+from .forms import (
+    UserRegistrationForm, 
+    UserUpdateForm, 
+    ProfileUpdateForm
+)
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages         #to pass a one time message to the template
 
