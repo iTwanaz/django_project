@@ -1,3 +1,3 @@
-#Django
+# Django
 
-Learning django and git 
+- Learning django and git.
